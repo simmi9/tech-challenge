@@ -1,12 +1,10 @@
-import React from 'react';
+import React from 'react';  
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';  
 import { Mainpage } from './Mainpage';
 import * as serviceWorker from './serviceWorker';
-
-
-
 
 ReactDOM.render(<Mainpage />, document.getElementById('root'));  
 

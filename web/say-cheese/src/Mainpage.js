@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Select from "react-select";
+import ReactDOM from 'react-dom';  
 import {Photogrid} from "./Photogrid";  
 
 export class Mainpage extends React.Component {
