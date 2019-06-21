@@ -20,12 +20,20 @@ export class Mainpage extends React.Component {
 			this.setState({ isUserChanged: false});   
 			if(e.target.value){     
 			let albumOpts = [];
+			let curPhotos = [];  
 			for(let i=0; i<this.state.albums.length;i++){  
 				if(this.state.albums[i].userId === Number(e.target.value)){    
 					albumOpts.push(<option key={this.state.albums[i].id} value={this.state.albums[i].id}> {this.state.albums[i].title} </option>);
+
+					this.state.photos.forEach(photo => {
+						if(photo.albumId === Number(this.state.albums[i].id)){  
+							curPhotos.push(photo);
+						}   
+	   				}) ;
+
 				}
 			}
-	   			this.setState({ isUserChanged: true, albumOptions: albumOpts});   
+			this.setState({ isUserChanged: true, albumOptions: albumOpts, isAlbumChanged: true, currentPhotos: curPhotos});     
 	   		}  
 		}  
 
@@ -34,11 +42,11 @@ export class Mainpage extends React.Component {
 				if(e.target.value){  
 					let curPhotos=[];  
 					this.state.photos.forEach(photo => {
-						if(photo.albumId === this.state.albums[0].id){
+						if(photo.albumId === Number(e.target.value)){  
 							curPhotos.push(photo);
 						}
 				}); 
-	     
+	     console.log(curPhotos);    
 	   			this.setState({ isAlbumChanged: true, currentPhotos: curPhotos}); 
 	   		}  
   
@@ -63,7 +71,8 @@ export class Mainpage extends React.Component {
 		const resJson2 = await req2.json();
        	let albumOpts = [];
 	      
-	    this.setState({albums: resJson1 , photos: resJson2, loading:false });  
+	    this.setState({albums: resJson1 , photos: resJson2, loading:false });    
+
 	    albumOpts.push(<option key={this.state.albums[0].id} value={this.state.albums[0].id}> {this.state.albums[0].title} </option>);
 	    this.setState({isAlbumChanged:true,albumOptions: albumOpts});   
 
@@ -73,6 +82,7 @@ export class Mainpage extends React.Component {
 				curPhotos.push(photo);
 			}
 		});  
+
 	   	this.setState({currentPhotos: curPhotos});    
 	}
 
@@ -87,8 +97,8 @@ export class Mainpage extends React.Component {
 		return (<section>
 			<div className='main-page'>  
 				<div className="select-containers">  
-							<div class="user-select-container">
-							<h2 class="user-select-container-title">Select User:</h2> 
+							<div className="user-select-container">
+							<h2 className="user-select-container-title">Select User:</h2>   
 							<select clearable={false}
 				            		onChange={this.userChange}
 				            		className="user-select">

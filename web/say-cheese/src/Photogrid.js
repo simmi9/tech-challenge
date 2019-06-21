@@ -9,9 +9,9 @@ render(){
 const { photos } = this.props
 
 return ( <section class="grid-section">
-			<div className='flex-grid'>
+			<div className="grid-container">  
 			{  
-				photos.map((photo,i) =><div key={i} className="col">    
+				photos.map((photo,i) =><div key={i}>    
 										<img src={photo.url} alt={photo.title}/> 
 										<p> {photo.title} </p>   
 									</div>   
@@ -23,4 +23,4 @@ return ( <section class="grid-section">
 		)  
 }
 
-}  
+}     

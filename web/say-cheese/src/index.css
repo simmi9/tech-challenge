@@ -19,7 +19,7 @@ code {
 display: flex;
 font-size: 1em;   
 background-color: beige;  
-align-content:center;
+justify-content: center;  
 }
 
 .select-containers{
@@ -33,7 +33,7 @@ align-items:baseline;
 	display:flex; 
 	font-size: 1em;  
 	width:fit; 
-	color: cadetblue;
+	color: gray;
 	margin: 2em;  
 	background-color: beige;
 	}    
@@ -56,7 +56,7 @@ align-items:baseline;
 	display:flex;  
 	font-size: 1em;
 	width: fit;      
-	color: orange; 
+	color: gray; 
 	margin: 2em;  
 	background-color: beige;  
 	} 
@@ -79,21 +79,26 @@ display:flex;
 }
 
 .grid-section {
-	display: flex;
-	align-items: center;  
+	display: flex;  
 	margin:2em;  
+}  
+  .grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: lightgray;  
+  padding: 10px;
+  width:100%;  
 }
 
-.flex-grid {
-  display: flex;  
-  flex-wrap: wrap;  
-}
-.col {
-  flex: 1;
+.grid-container > div {
+  background-color: beige;  
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px; 
 }  
-  
-@media (max-width: 400px) {
-  .flex-grid {
-    display: block;
-  }
-}
+
+ img {
+  max-width: 100%;
+  height: auto;  
+}   
