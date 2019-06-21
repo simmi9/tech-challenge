@@ -95,10 +95,14 @@ export class Mainpage extends React.Component {
 
 	render() {
 		return (<section>
+			<div className="jumbotron">
+		        <h1>Say Cheese.....!!!!</h1>      
+		         <p>A Simple web app that allows a user to see their albums and its' associated photographs</p>    
+		    </div>    
 			<div className='main-page'>  
 				<div className="select-containers">  
 							<div className="user-select-container">
-							<h2 className="user-select-container-title">Select User:</h2>   
+							<h3 className="user-select-container-title">Select User:</h3>     
 							<select clearable={false}
 				            		onChange={this.userChange}
 				            		className="user-select">
@@ -109,7 +113,7 @@ export class Mainpage extends React.Component {
 				            {
 				            	(this.state.isUserChanged || this.state.isAlbumChanged)?     
 				            	<div class="album-select-container">
-									<h2 class="album-select-container-title">Select Album:</h2>  
+									<h3 class="album-select-container-title">Select Album:</h3>  
 									<select  clearable={false} 
 						            		 onChange={this.albumChange}  
 						                     className="user-select">      
