@@ -3,6 +3,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+   font-size:1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,14 +11,63 @@ body {
 
 .main-page {
 display: flex;
-justify-content: center;
+font-size: 1em;   
+}
+
+.select-containers{
+display:flex;
+flex-wrap:nowrap;  
+justify-content: space-around;   
+align-items:baseline;     
+}
+
+.user-select-container {
+	display:flex; 
+	font-size: 1em;  
+	width:fit; 
+	color: cadetblue;
+	margin: 2em;  
+	background-color: beige;
+	}    
+
+
+.user-select-container-title {
+   display:flex;  
+   margin: 2em;  
+	}
 
 .user-select {
-	display: flex;
-	width: max-content;
-	font-size: 2em; 
+	display:flex; 
+	font-size: 1em;  
+	width:fit; 
 	color: cadetblue;
+	margin: 2em;  
+	}   
+
+.album-select-container {
+	display:flex;  
+	font-size: 1em;
+	width: fit;      
+	color: orange; 
+	margin: 2em;  
+	background-color: beige;  
+	} 
+
+.album-select-container-title {
+   display:flex;
+   margin: 2em;
+	}
+
+.album-select {  
+	display:flex; 
+	font-size: 1em;  
+	width:max-content;   
+	color: orange;
+	margin: 2em;  
 	}  
+
+.photo-grid{
+display:flex;
 }
 
 code {

@@ -11,6 +11,7 @@ export class Mainpage extends React.Component {
 		albumOptions:[],
 		isAlbumChanged:false,  
 		photos:[],
+		currentPhotos:[],
 		loading:false
 	}
 
@@ -23,12 +24,23 @@ export class Mainpage extends React.Component {
 					albumOpts.push(<option key={this.state.albums[i].id} value={this.state.albums[i].id}> {this.state.albums[i].title} </option>);
 				}
 			}
-	   			this.setState({ isUserChanged: true, albumOptions: albumOpts});
-	   			console.log(this.state.albums)    
+	   			this.setState({ isUserChanged: true, albumOptions: albumOpts});   
 	   		}  
-  
 		}  
 
+		albumChange = (e) => {    
+			this.setState({ isAlbumChanged: false});   
+			if(e.target.value){  
+				let curPhotos;
+				curPhotos = this.state.photos.map(photo =>{
+				if(photo.albumId === Number(e.target.value)){
+					return photo;
+				}	
+				});
+	   			this.setState({ isAlbumChanged: true, currentPhotos: curPhotos}); 
+	   		}  
+  
+		} 
 
 
 	//using Component Life Cycle Methods
@@ -51,8 +63,15 @@ export class Mainpage extends React.Component {
 	      
 	    this.setState({albums: resJson1 , photos: resJson2, loading:false });  
 	    albumOpts.push(<option key={this.state.albums[0].id} value={this.state.albums[0].id}> {this.state.albums[0].title} </option>);
-	    this.setState({isAlbumChanged:true,albumOptions: albumOpts});       
-   
+	    this.setState({isAlbumChanged:true,albumOptions: albumOpts});   
+
+		let curPhotos;
+		curPhotos = this.state.photos.map(photo =>{
+		if(photo.albumId === this.state.albums[0].id){
+				return photo;
+			}	
+		});
+	   	this.setState({currentPhotos: curPhotos});    
 	}
 
 
@@ -63,24 +82,36 @@ export class Mainpage extends React.Component {
 		}
 
 	render() {
-		return (
+		return (<section>
 			<div className='main-page'>  
-						<select
-			            clearable={false}
-			            onChange={this.userChange}
-			            className="user-select">
-			            {this.state.users}
-			            </select>  
+				<div className="select-containers">  
+							<div class="user-select-container">
+							<h2 class="user-select-container-title">Select User:</h2> 
+							<select clearable={false}
+				            		onChange={this.userChange}
+				            		className="user-select">
+				            		{this.state.users}
+				            </select>  
+				            </div>   
 
-			            {
-			            	(this.state.isUserChanged || this.state.isAlbumChanged)?     
-			            	<select  
-			            clearable={false} 
-			            className="user-select">    
-			            {this.state.albumOptions}    
-			            </select>  :''
-			            }
+				            {
+				            	(this.state.isUserChanged || this.state.isAlbumChanged)?     
+				            	<div class="album-select-container">
+									<h2 class="album-select-container-title">Select Album:</h2>  
+									<select  clearable={false} 
+						            		 onChange={this.albumChange}  
+						                     className="user-select">      
+						               {this.state.albumOptions}    
+						            </select> 
+						         </div> :''    
+
+				            }
+				     </div>  
 			</div>
+			{
+			  this.state.isAlbumChanged? <div className="photo-grid" photos={this.state.photos}> Photos will be displayed here</div> : 'no photos available'  
+			      }  
+			</section>  
 		)
 	}
 }  
