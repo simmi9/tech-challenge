@@ -7,16 +7,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+  
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 
 
 .main-page {
 display: flex;
 font-size: 1em;   
+background-color: beige;  
+align-content:center;
 }
 
 .select-containers{
 display:flex;
-flex-wrap:nowrap;  
+flex-wrap:wrap;    
 justify-content: space-around;   
 align-items:baseline;     
 }
@@ -66,11 +74,26 @@ align-items:baseline;
 	margin: 2em;  
 	}  
 
-.photo-grid{
+.photo-grid {  
 display:flex;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.grid-section {
+	display: flex;
+	align-items: center;  
+	margin:2em;  
+}
+
+.flex-grid {
+  display: flex;  
+  flex-wrap: wrap;  
+}
+.col {
+  flex: 1;
+}  
+  
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block;
+  }
 }

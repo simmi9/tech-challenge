@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Select from "react-select";
+import {Photogrid} from "./Photogrid";  
 
 export class Mainpage extends React.Component {
 
@@ -30,18 +31,19 @@ export class Mainpage extends React.Component {
 
 		albumChange = (e) => {    
 			this.setState({ isAlbumChanged: false});   
-			if(e.target.value){  
-				let curPhotos;
-				curPhotos = this.state.photos.map(photo =>{
-				if(photo.albumId === Number(e.target.value)){
-					return photo;
-				}	
-				});
+				if(e.target.value){  
+					let curPhotos=[];  
+					this.state.photos.forEach(photo => {
+						if(photo.albumId === this.state.albums[0].id){
+							curPhotos.push(photo);
+						}
+				}); 
+	     
 	   			this.setState({ isAlbumChanged: true, currentPhotos: curPhotos}); 
 	   		}  
   
 		} 
-
+  
 
 	//using Component Life Cycle Methods
 	async componentDidMount() {
@@ -65,12 +67,12 @@ export class Mainpage extends React.Component {
 	    albumOpts.push(<option key={this.state.albums[0].id} value={this.state.albums[0].id}> {this.state.albums[0].title} </option>);
 	    this.setState({isAlbumChanged:true,albumOptions: albumOpts});   
 
-		let curPhotos;
-		curPhotos = this.state.photos.map(photo =>{
-		if(photo.albumId === this.state.albums[0].id){
-				return photo;
-			}	
-		});
+		let curPhotos=[];  
+		this.state.photos.forEach(photo => {
+			if(photo.albumId === this.state.albums[0].id){
+				curPhotos.push(photo);
+			}
+		});  
 	   	this.setState({currentPhotos: curPhotos});    
 	}
 
@@ -105,13 +107,13 @@ export class Mainpage extends React.Component {
 						            </select> 
 						         </div> :''    
 
-				            }
+				            }      
 				     </div>  
 			</div>
 			{
-			  this.state.isAlbumChanged? <div className="photo-grid" photos={this.state.photos}> Photos will be displayed here</div> : 'no photos available'  
+			  this.state.isAlbumChanged? <Photogrid className="photo-grid" photos={this.state.currentPhotos}/>: 'no photos available'     
 			      }  
-			</section>  
+			</section>    
 		)
 	}
 }  
