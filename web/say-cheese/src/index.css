@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+   font-size:1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+  
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+
+.main-page {
+display: flex;
+font-size: 1em;   
+background-color: beige;  
+justify-content: center;  
+}
+
+.select-containers{
+display:flex;
+flex-wrap:wrap;    
+justify-content: space-around;   
+align-items:baseline;     
+}
+
+.user-select-container {
+	display:flex; 
+	font-size: 1em;  
+	width:fit; 
+	color: gray;
+	margin: 2em;  
+	background-color: beige;
+	}    
+
+
+.user-select-container-title {
+   display:flex;  
+   margin: 2em;  
+	}
+
+.user-select {
+	display: flex; 
+	font-size: 1em;  
+	width: fit; 
+	color: cadetblue;
+	margin: 2em;  
+	}   
+
+.album-select-container {
+	display: flex;  
+	font-size: 1em;
+	width: fit;      
+	color: gray; 
+	margin: 2em;  
+	background-color: beige;  
+	} 
+
+.album-select-container-title {
+   display:flex;
+   margin: 2em;
+	}
+
+.album-select {  
+	display:flex; 
+	font-size: 1em;  
+	width:max-content;   
+	color: orange;
+	margin: 2em;  
+	}  
+
+.photo-grid {  
+display:flex;
+}
+
+.grid-section {
+	display: flex;  
+	margin:2em;  
+}  
+  .grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: lightgray;  
+  padding: 10px;
+  width:100%;  
+}
+
+.grid-container > div {
+  background-color: beige;  
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px; 
+}  
+
+ img {
+  max-width: 100%;
+  height: auto;  
+}   
+
+
+.jumbotron{
+    position: relative;
+    padding:0 !important;
+    background: #eee;
+    text-align:center;
+    margin-bottom: 0 !important;
+    font-size:2.5em;
+    color: midnightblue;
+}  
